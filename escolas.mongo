@@ -1,0 +1,48 @@
+db.escolas.find({
+    nome: 'Programação'
+}, 
+{
+    slug: 1,
+    _id: 0
+})
+
+db.escolas.updateMany({}, {
+    $set: { status: 'ATIVA' }
+})
+
+db.escolas.updateMany({
+    nome: {
+        $in: ['Front-end', 'Data Science']
+    }
+}, {
+    $set: { 
+        status : 'INATIVA'
+    }
+})
+
+
+
+db.escolas.insertMany([
+    {
+        nome: 'Programação',
+        slug: 'escola-programacao'
+    },
+    {
+        nome: 'Front-end',
+        slug: 'escola-front-end'
+    },
+    {
+        nome: 'Data Science',
+        slug: 'escola-data-science'
+    },
+    {
+        nome: 'DevOps',
+        slug: 'escola-devops'
+    },
+    {
+        nome: 'Mobile',
+        slug: 'escola-mobile'
+    }
+])
+
+db.escolas.drop()

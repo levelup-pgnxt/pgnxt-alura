@@ -1,0 +1,95 @@
+db.cursos.find({
+    cargaHorariaEmHoras: {
+        $gte: 10
+    }
+})
+
+db.cursos.find({ cargaHorariaEmHoras: { $lt: 10 } })
+    .sort({'nome': -1 } )
+
+db.cursos.insertOne({
+    nome: 'JavaScript: objetos',
+    cargaHorariaEmHoras: 8,
+    avaliacao: 9.4,
+    dataAtualizacao: ISODate('2022-11-22')
+})
+
+
+db.cursos.insertMany([
+    {
+        nome: 'Flutter: Widgets, Stateless, Stateful, Imagens e Animações',
+        cargaHorariaEmHoras: 16,
+        avaliacao: 9.6,
+        dataAtualizacao: ISODate('2022-10-20')
+    },
+    {
+        nome: 'AWS Certified Cloud Practitioner: Domain 1 e 2',
+        cargaHorariaEmHoras: 8,
+        avaliacao: 9.2,
+        dataAtualizacao: ISODate('2022-04-20')
+    }
+])
+
+db.cursos.updateOne(
+    {
+        nome: 'JavaScript: objetos'
+    },
+    {
+        $set: {
+            escola: {
+                nome: 'Programação',
+                slug: 'escola-programacao'
+            }
+        }
+    }
+)
+
+db.cursos.find()
+
+db.cursos.deleteOne({
+    _id: ObjectId("63bdcd248dd667b4b62c44f2")
+})
+
+db.cursos.insertOne({
+    nome: 'JavaScript: Arrays',
+    cargaHorariaEmHoras: 8,
+    avaliacao: 9.4,
+    dataAtualizacao: ISODate('2022-12-22'),
+    escola: {
+        nome: 'Programação',
+        slug: 'escola-programacao'
+    }
+})
+
+
+db.cursos.deleteOne({
+    _id: ObjectId("63bdceff8dd667b4b62c44f6")
+})
+
+db.cursos.updateOne(
+    {
+        nome: 'Flutter: Widgets, Stateless, Stateful, Imagens e Animações'
+    },
+    {
+        $set: {
+            escola: {
+                nome: 'Mobile',
+                slug: 'escola-mobile'
+            }
+        }
+    }
+)
+
+db.cursos.updateOne(
+    {
+        nome: 'AWS Certified Cloud Practitioner: Domain 1 e 2'
+    },
+    {
+        $set: {
+            escola: {
+                nome: 'DevOps',
+                slug: 'escola-devops'
+            }
+        }
+    }
+)
