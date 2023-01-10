@@ -3,6 +3,7 @@ version: '3.0'
 services:
 
   mongo:
+    container_name: mongo-alura
     image: mongo
     restart: always
     ports:
